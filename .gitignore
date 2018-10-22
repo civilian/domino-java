@@ -1,0 +1,7 @@
+.class
+.vagrant
+ubuntu-bionic-18.04-cloudimg-console.log
+site.retry
+.env
+.vscode
+deploy_tools/provision.and.deploy.ansible/templates/*
