@@ -1,0 +1,41 @@
+---
+# This role prepares the development machine and does the steps necessary only
+# on them.
+
+- name: make sure required packages are installed
+  become: yes
+  apt: 
+    force: yes 
+    pkg: '{{ development_packages }}' 
+    state: present
+
+- name: create the directory structure for running at_startup.sh with autostart
+  file: 
+    path: /home/{{ project.user }}/.config/autostart 
+    state: directory
+    mode: 0755
+    owner: '{{ project.user }}'
+
+- name: create bash_profile to run xfce after login
+  template: 
+    backup: yes
+    src: .bash_profile.j2
+    dest: /home/{{ project.user }}/.bash_profile
+    owner: '{{ project.user }}'
+
+- name: create at_startup.sh to change the keyboard layout and run xterm at
+        startup
+  template: 
+    backup: yes
+    src: at_startup.sh.j2
+    dest: '{{ at_startup_sh_location }}'
+    owner: '{{ project.user }}'
+    mode: 0500
+
+- name: create at_startup.desktop to been able to run at_startup.sh
+  template: 
+    backup: yes
+    src: at_startup.desktop.j2
+    dest: '/home/{{ project.user }}/.config/autostart/at_startup.desktop'
+    owner: '{{ project.user }}'
+    mode: 0500

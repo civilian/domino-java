@@ -116,7 +116,7 @@ public class UI extends JPanel implements ActionListener, Identificadores {
 		}
 
 		// fichasTableroAb.get(tabAb).setEnabled(false);
-		// toque ahí se queda mientras carga
+		// toque ahi se queda mientras carga
 
 	}
 
@@ -348,7 +348,6 @@ public class UI extends JPanel implements ActionListener, Identificadores {
 	}
 
 	private void escogidoAct(FichaDomino escogida) {
-		// TODO Auto-generated method stub
 		dbg(escogida);
 		dbg(tabAb);
 		dbg(tabAr);
@@ -707,7 +706,7 @@ public class UI extends JPanel implements ActionListener, Identificadores {
 
 			fichasTableroAr = new ArrayList<FichaDomino>(cantidadFichas);
 			fichasTableroAb = new ArrayList<FichaDomino>(cantidadFichas);
-			// }//TODO: LAS AÑADO Y LES DOY SET VISIBLE EN EL EVENTO
+			// }//TODO: LAS ANNADO Y LES DOY SET VISIBLE EN EL EVENTO
 			// for (int i = 0; i < 23; i++) {
 			// fichasTableroAr.add(new FichaDomino());
 			// this.add(fichasTableroAr.get(i));

@@ -1,0 +1,8 @@
+---
+at_startup_sh_location: /home/{{ project.user }}/.config/autostart/at_startup.sh
+# We create a new command directly en /usr/bin/
+create_work_space_sh_location: /usr/bin/create_work_space_{{ project.name }}.sh
+development_packages:
+  - xfce4
+  - gnome-terminal
+public_html_dir: /home/{{ project.user }}/public_html

@@ -1,0 +1,5 @@
+---
+all_packages:
+# TODO: I need to upload the vim configuration that i like.
+  - vim
+  - git

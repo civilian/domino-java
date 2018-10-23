@@ -1,0 +1,22 @@
+---
+
+- name: installing the packages for domino-java
+  become: yes
+  apt: 
+    pkg: 'openjdk-8-jdk' 
+    state: present
+
+- name: create the directory structure for the django project
+  file: path={{ project_root }} state=directory
+        mode=0755 owner={{ project.user }}
+
+- name: pulling the repository
+  git:
+    repo: '{{ repository }}'
+    dest: '{{ project_root }}'
+
+- name: compile the project
+  command: "javac UI.java"
+  args:
+    chdir: "{{ project_root }}"
+  changed_when: false

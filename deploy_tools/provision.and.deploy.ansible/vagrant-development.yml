@@ -1,0 +1,12 @@
+---
+# TODO: Maybe put a changed_when because it always shows changed.
+
+- hosts: development
+  vars:
+      host: "{{ inventory_hostname }}"
+  roles:
+    - deploy-xserver-for-development-machine
+    - provision-projects-ssh-keys
+    - role: deploy-domino-java
+      project_name: domino-java
+      repository: git@github.com:civilian/domino-java.git

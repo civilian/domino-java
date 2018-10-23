@@ -1,0 +1,52 @@
+---
+# This role contains common plays that will run on all nodes.
+
+# TODO: Maybe create another user that takes care of the real 'sudo' part
+# TODO: Check if the deploy user should be in the sudo group or not.
+- name: create common user for all the servers
+  become: yes
+  user: 
+      name: '{{ project.user }}' 
+      shell: /bin/bash 
+      createhome: yes
+      home: '/home/{{ project.user }}'
+      password: "{{ project.user | password_hash('sha512') }}"
+      groups: "sudo"
+      comment: "common user for all the servers"
+
+- name: Check if vim is already installed.
+  stat: 
+    path: /usr/bin/vim
+  register: vim_installed
+
+- name: Update apt cache if vim not installed
+  become: yes
+  apt: 
+    update_cache: yes
+  when: vim_installed.stat.exists == false
+
+# TODO: Maybe less time?, i don't know, maybe don't
+- name: Update apt cache if not done today
+  become: yes
+  apt: 
+    update_cache: yes 
+    cache_valid_time: 86400
+
+- name: installing the packages for all the hosts
+  become: yes
+  apt: 
+    pkg: '{{ all_packages }}' 
+    state: present
+
+- name: Remove password authentication from ssh
+  become: yes
+  replace:
+    dest: /etc/ssh/sshd_config
+    regexp: '\#PasswordAuthentication yes'
+    replace: 'PasswordAuthentication no'
+
+- name: Add alias 'l' for ls
+  replace:
+    dest: '/home/{{ project.user }}/.bashrc'
+    regexp: '\#alias l'
+    replace: 'alias l'

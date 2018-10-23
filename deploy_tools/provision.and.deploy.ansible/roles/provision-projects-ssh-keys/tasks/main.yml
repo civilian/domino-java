@@ -1,0 +1,42 @@
+---
+- name: create the directory structure for the ssh config
+  file:
+    path: '/home/{{ project.user }}/.ssh/'
+    state: directory
+    mode: 0755
+    owner: '{{ project.user }}'
+
+- name: create the config for ssh for github gitlab and bitbucket
+  template: 
+    backup: yes
+    src: ssh_config
+    dest: '/home/{{ project.user }}/.ssh/config'
+    owner: '{{ project.user }}'
+    mode: 0664
+
+- name: put the private key to download the repositories
+  template: 
+    backup: yes
+    src: bitbucket
+    dest: '/home/{{ project.user }}/.ssh/bitbucket'
+    owner: '{{ project.user }}'
+    mode: 0600
+
+- name: get the username running the deploy
+  local_action: command whoami
+  register: username_on_the_host
+  changed_when: false
+
+- name: add the public key from this machine to the machine we are provisioning
+  authorized_key:
+    user: '{{ project.user }}'
+    state: present
+    key: "{{ lookup('file', '/home/{{ username_on_the_host.stdout }}/.ssh/id_rsa.pub') }}"
+
+- name: ensure github.com is a known host
+  lineinfile:
+    dest: '/home/{{ project.user }}/.ssh/known_hosts'
+    create: yes
+    state: present
+    line: "{{ lookup('pipe', 'ssh-keyscan -t rsa github.com') }}"
+    regexp: "^github\\.com"
