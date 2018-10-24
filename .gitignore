@@ -1,4 +1,4 @@
-.class
+*.class
 .vagrant
 ubuntu-bionic-18.04-cloudimg-console.log
 site.retry

@@ -27,8 +27,8 @@ public class NodoMiniMaxDomino implements Identificadores {
 
 	// Esta es una ficha inicial que representa los dos lados por los cuales se
 	// puede jugar el juego que esta en la mesa,
-	// Si las fichas estuvieran en la mesa así:
-	// |1 | 2|..| 2| 3|..|3 | 5| esta ficha sería |1 | 5| ya que son los numeros
+	// Si las fichas estuvieran en la mesa asi:
+	// |1 | 2|..| 2| 3|..|3 | 5| esta ficha seria |1 | 5| ya que son los numeros
 	// en los cuales puedo poner mi jugada
 	private Ficha F;
 
@@ -48,7 +48,7 @@ public class NodoMiniMaxDomino implements Identificadores {
 	// Esta es la posicion en la que se puso la ultima ficha para llegar a este
 	// esenario en el caso de arriba si:
 	// con : |1 | 2|..| 2| 3|..|3 | 5|
-	// 1 fuera arriba y 5 fuera abajo en el hijo del ejemplo este sería true;
+	// 1 fuera arriba y 5 fuera abajo en el hijo del ejemplo este serï¿½a true;
 	private boolean arriba;
 
 	// constructor normal solo le entran los parametros necesarios
@@ -139,7 +139,7 @@ public class NodoMiniMaxDomino implements Identificadores {
 	}
 
 	// Funcion auxiliar para simplificar el echo de crear un nodo para una nueva
-	// situación
+	// situacion
 	public NodoMiniMaxDomino crearNodo(ArrayList<Ficha> pc, ArrayList<Ficha> j,
 			int idxIgual, Ficha nueva, int tipoN, Ficha usad, boolean arr) {
 
