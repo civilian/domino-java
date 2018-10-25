@@ -16,7 +16,7 @@
     dest: '{{ project_root }}'
 
 - name: compile the project
-  command: "javac UI.java"
+  command: "javac Main.java"
   args:
     chdir: "{{ project_root }}"
   changed_when: false

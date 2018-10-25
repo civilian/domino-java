@@ -17,7 +17,6 @@ import javax.swing.ButtonGroup;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
-import javax.swing.JFrame;
 import javax.swing.JLayeredPane;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
@@ -731,16 +730,6 @@ public class UI extends JPanel implements ActionListener, Identificadores {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-
-	}
-
-	public static void main(String[] args) {
-		JFrame frame = new JFrame();
-		frame.getContentPane().add(new UI(1));
-		frame.pack();
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		// frame.setResizable(false);
-		frame.setVisible(true);
 
 	}
 }
