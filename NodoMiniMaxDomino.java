@@ -48,7 +48,7 @@ public class NodoMiniMaxDomino implements Identificadores {
 	// Esta es la posicion en la que se puso la ultima ficha para llegar a este
 	// esenario en el caso de arriba si:
 	// con : |1 | 2|..| 2| 3|..|3 | 5|
-	// 1 fuera arriba y 5 fuera abajo en el hijo del ejemplo este ser�a true;
+	// 1 fuera arriba y 5 fuera abajo en el hijo del ejemplo este seria true;
 	private boolean arriba;
 
 	// constructor normal solo le entran los parametros necesarios
